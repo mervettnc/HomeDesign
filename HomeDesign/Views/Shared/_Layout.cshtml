@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home Design - @ViewBag.Title</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fonts/icomoon/style.css" rel="stylesheet" />
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/fonts/flaticon/font/_flaticon.css" rel="stylesheet" />
+    <link href="~/Content/aos.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div class="site-wrap">
+
+
+
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div> <!-- .site-mobile-menu -->
+
+
+        <div class="site-navbar-wrap js-site-navbar bg-white">
+
+            <div class="container">
+                <div class="site-navbar bg-light">
+                    <div class="row align-items-center">
+                        <div class="col-2">
+                            <h2 class="mb-0 site-logo "><a href="#" class=" text-uppercase">Home Design</a></h2>
+                        </div>
+                        <div class="col-10">
+                            <nav class="site-navigation text-right" role="navigation">
+                                <div class="container">
+                                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                        <li class="nav-item">
+                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                        </li>
+
+                                        <li class="nav-item">
+                                            @Html.ActionLink("Projects", "Projects", "Home", null, new { @class = "nav-link" })
+                                        </li>
+                                        <li class="nav-item">
+                                            @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-one-item home-slider owl-carousel">
+
+            <div class="site-blocks-cover inner-page overlay" style="  background-image: url('../../Images/hero_2.jpg');
+" data-aos="fade" data-stellar-background-ratio="0.5">
+
+            </div>
+
+            <div class="site-blocks-cover inner-page overlay" style=" background-image: url('../../Images/hero_1.jpg');
+" data-aos="fade" data-stellar-background-ratio="0.5">
+
+            </div>
+        </div>
+        <div class="slant-1"></div>
+
+        @RenderBody()
+
+      
+    <footer class="site-footer bg-dark ">
+      
+        <div class="container ">
+            <div class="row ">
+
+                <div class="col-md-2">
+
+                    <div class="col-md-12 ">
+                        <p>
+
+                            <a href="#" class="pb-2 pr-2 pl-0 "><span class="icon-facebook "></span></a>
+                            <a href="#" class="p-2"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-2"><span class="icon-instagram"></span></a>
+
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row pt-5 mt-5 text-center">
+                <div class="col-md-12">
+                    <p>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+
+                    </p>
+
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-migrate-3.0.1.min.js"></script>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/jquery.stellar.min.js"></script>
+
+    <script src="~/Scripts/jquery.waypoints.min.js"></script>
+
+    <script src="~/Scripts/jquery.animateNumber.min.js"></script>
+
+    <script src="~/Scripts/aos.js"></script>
+ 
+    <script src="~/Scripts/main.js"></script>
+  
+
+    @RenderSection("scripts",false)
+</body>
+</html>
