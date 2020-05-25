@@ -1,0 +1,9 @@
+﻿@model Project
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h1 class="mt-5">@Model.Title</h1>
+
+<div class="show-project">@Html.Raw(Model.Content)</div>
+

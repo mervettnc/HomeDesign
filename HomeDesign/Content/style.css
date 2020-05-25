@@ -50,18 +50,20 @@ a {
   border-radius: 0px; }
 
 .btn {
-  border-radius: 0px; }
+  border-radius: 10px; }
   .btn.btn-primary:hover {
     border-color: #71bc42; }
 
+
 .site-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-  background: #fff; }
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
   .site-wrap:before {
     -webkit-transition: .3s all ease-in-out;
     -o-transition: .3s all ease-in-out;
@@ -139,9 +141,9 @@ a {
         letter-spacing: .1em;
     }
   .site-footer a {
-    color: green /*rgba(255, 255, 255, 0.3)*/; }
+    color:rgba(255, 255, 255, 0.3); }
     .site-footer a:hover {
-      color: lightgreen /*#fff*/; }
+      color:#fff; }
   .site-footer ul li {
     /*margin-bottom: 10px;*/ }
 
@@ -153,7 +155,7 @@ a {
 
 .bg-image {
   background-size: cover;
-  background-repeat: no-rpeeat;
+  background-repeat: no-repeat;
   overflow: hidden;
   background-position: center center; }
   .bg-image.center {
@@ -1342,7 +1344,11 @@ a {
   -webkit-box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.2); }
 
+.show-project img { /*show.cshtml de*/
+max-width:100%;
+}
 .media-image {
+    max-width:100%;
   -webkit-transition: .3s all ease-in-out;
   -o-transition: .3s all ease-in-out;
   transition: .3s all ease-in-out; }
@@ -1427,7 +1433,7 @@ a {
   height: 70px;
   position: relative;
   z-index: 4;
-  border: 1px solid red; }
+  border: 1px solid ; }
   .slant-1:before {
     position: absolute;
     width: 200%;
