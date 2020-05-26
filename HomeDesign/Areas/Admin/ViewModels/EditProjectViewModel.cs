@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace HomeDesign.Areas.Admin.ViewModels
 {
-    public class NewProjectViewModel
+    public class EditProjectViewModel
     {
-   
+        public int Id { get; set; }
         public int CategoryId { get; set; }
 
         [Required]
@@ -19,6 +19,14 @@ namespace HomeDesign.Areas.Admin.ViewModels
 
         [AllowHtml] //içerikte html izin vermesi için 
         public string Content { get; set; }
+
+        public string CurrentFeaturedImage { get; set; }
+
+        [Display(Name = "Last Modified")]
+        public DateTime ModificationTime { get; set; }
+
+        [Display(Name = "Created")]
+        public DateTime CreationTime { get; set; }
 
         [PostedImage]
         public HttpPostedFileBase FeaturedImage { get; set; }

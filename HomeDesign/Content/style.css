@@ -1630,3 +1630,20 @@ max-width:100%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+
+.blog-project-content {
+
+position:relative;
+max-height:200px;
+overflow:hidden;
+}
+.blog-project-content::after{
+    content:"";
+    display:block;
+    position:absolute;
+    bottom:0;
+    height:1rem;
+    width:100%;
+    background-image: linear-gradient(to bottom,transparent,white);
+
+} 

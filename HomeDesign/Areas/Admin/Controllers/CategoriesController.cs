@@ -69,11 +69,11 @@ namespace HomeDesign.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            //if (category.Posts.Count > 0)
-            //{
-            //    TempData["ErrorMessage"] = "A category must not contain any posts in order to be deleted.";
-            //    return RedirectToAction("Index");
-            //}
+            if (category.Projects.Count > 0) //silincek kategorinin içinde proje varsa silinemez
+            {
+                TempData["ErrorMessage"] = "A category must not contain any projects in order to be deleted.";
+                return RedirectToAction("Index");
+            }
             db.Categories.Remove(category);
             db.SaveChanges();
             TempData["SuccessMessage"] = "The category  deleted successfully.";
