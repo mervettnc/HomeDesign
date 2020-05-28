@@ -29,7 +29,7 @@ namespace HomeDesign.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var fileName = this.SaveCroppedFeaturedImage(vm.CroppedImage);
                 Project project = new Project
                 {
 
@@ -40,11 +40,13 @@ namespace HomeDesign.Areas.Admin.Controllers
                     Slug = UrlService.URLFriendly(vm.Slug),
                     CreationTime = DateTime.Now,
                     ModificationTime = DateTime.Now,
-                    PhotoPath = this.SaveImage(vm.FeaturedImage)
+                    PhotoPath = fileName ?? null
 
                 };
                 db.Projects.Add(project);
                 db.SaveChanges();
+                TempData["SuccessMessage"] = "The project created successfully.";
+
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(x => x.CategoryName).ToList(), "Id", "CategoryName");
@@ -112,10 +114,24 @@ namespace HomeDesign.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var project = db.Projects.Find(vm.Id);
+                project.CategoryId = vm.CategoryId;
+                project.Title = vm.Title;
+                project.Content = vm.Content;
+                project.ModificationTime = DateTime.Now;
+                project.Slug = UrlService.URLFriendly(vm.Slug);
+                if (vm.FeaturedImage != null)
+                {
+                    this.DeleteImage(project.PhotoPath);
+                    project.PhotoPath = this.SaveImage(vm.FeaturedImage);
+                }
+
+                db.SaveChanges();
+                TempData["SuccessMessage"] = "The project updated successfully.";
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(x => x.CategoryName).ToList(), "Id", "CategoryName");
 
+            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(x => x.CategoryName).ToList(), "Id", "CategoryName");
             return View(vm);
         }
 

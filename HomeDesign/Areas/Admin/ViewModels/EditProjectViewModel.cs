@@ -36,7 +36,10 @@ namespace HomeDesign.Areas.Admin.ViewModels
         [StringLength(100)]
         public string Slug { get; set; }
 
-     
+        public string CroppedImage { get; set; }
+
+
+
     }
 
 }

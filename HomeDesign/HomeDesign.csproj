@@ -206,6 +206,7 @@
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\dist\css\admin.custom.css" />
     <Content Include="Areas\Admin\dist\css\adminlte.css" />
     <Content Include="Areas\Admin\dist\css\adminlte.min.css" />
     <Content Include="Areas\Admin\dist\css\alt\adminlte.components.css" />

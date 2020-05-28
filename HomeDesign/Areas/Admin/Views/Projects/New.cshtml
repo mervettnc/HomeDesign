@@ -6,6 +6,7 @@
 @using (Html.BeginForm("New", "Projects", FormMethod.Post, new { enctype = "multipart/form-data" })) //multipartlı olan dosya resm vs için gerekli
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.CroppedImage)
     <div class="card card-primary ">
         <div class="card-header">
             <h3 class="card-title">Create a New Project</h3>
@@ -37,21 +38,38 @@
                 <div class="col-md-6 form-inline my-1">
                     <label for="exampleInputFile">Featured Image</label>
                     <div class="input-group flex-fill ml-2">
-                        <div class="custom-file">
-                            <input type="file" name="FeaturedImage" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label justify-content-start" for="exampleInputFile">Choose file</label>
-                        </div>
+                        <div id="previewProductImage" class="mx-2"></div>
+                        <a href="#" id="deleteProductImage" type="button" class="d-none btn btn-danger text-white mx-2">Delete Image</a>
+                        <a href="#" type="button" class="btn btn-primary text-white" id="test" data-toggle="modal" data-target="#modalChangePhoto">Choose Image</a>
                     </div>
                     @Html.ValidationMessage("FeaturedImage", null, new { @class = "text-danger ml-1" })
                 </div>
-                <div class="col-md-6 form-inline align-content-start">
+                <div class="col-md-6 form-inline align-content-start my-1">
                     @Html.LabelFor(x => x.Slug)
-                    @Html.TextBoxFor(x => x.Slug, new { @class = "form-control ml-2 flex-fill", placeholder = "Short URL" })
-                    <a id="refreshSlug" href="#" class="mx-1 text-secondary"> <i class="fas fa-sync-alt"></i> </a>
+                    @Html.TextBoxFor(x => x.Slug, new { @class = "form-control flex-fill ml-2", placeholder = "a-sample-url" })
+                    <a id="refreshSlug" href="#" class="mx-1 btn btn-primary"><i class="fas fa-sync-alt text-white"></i></a>
                     @Html.ValidationMessageFor(x => x.Slug, null, new { @class = "text-danger" })
-
                 </div>
             </div>
+            @*<div class="row">
+                    <div class="col-md-6 form-inline my-1">
+                        <label for="exampleInputFile">Featured Image</label>
+                        <div class="input-group flex-fill ml-2">
+                            <div class="custom-file">
+                                <input type="file" name="FeaturedImage" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label justify-content-start" for="exampleInputFile">Choose file</label>
+                            </div>
+                        </div>
+                        @Html.ValidationMessage("FeaturedImage", null, new { @class = "text-danger ml-1" })
+                    </div>
+                    <div class="col-md-6 form-inline align-content-start">
+                        @Html.LabelFor(x => x.Slug)
+                        @Html.TextBoxFor(x => x.Slug, new { @class = "form-control ml-2 flex-fill", placeholder = "Short URL" })
+                        <a id="refreshSlug" href="#" class="mx-1 text-secondary"> <i class="fas fa-sync-alt"></i> </a>
+                        @Html.ValidationMessageFor(x => x.Slug, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>*@
 
         </div>
         <!-- /.card-body -->
@@ -63,24 +81,53 @@
                 <!-- /.card-footer -->
             </div>
             <!-- /.card -->
-        </div>  
+        </div>
     </div>
 }
 
+<!-- Modal -->
+<div class="modal fade" id="modalChangePhoto" tabindex="-1" role="dialog" aria-labelledby="modalChangePhotoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalChangePhotoTitle">Choose a Product Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="file-input">
+                    <label class="custom-file-label" for="customFile" data-browse="Browse">Choose file</label>
+                </div>
+                <div class="cropper-wrapper">
+                    <div class="cropper"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btnUpload" type="button" class="btn btn-primary" disabled>Crop Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
 @section scripts{
     <script>
-        $("#Title").change(function () {
+        $(function () {
+            $("#Title").change(function () {
                 if (!$("#Slug").val()) {
                     generateSlug();
-                    }
-        });
+                }
+            });
+            $("#refreshSlug").click(function (event) {
+                event.preventDefault();
+                generateSlug();
+            });
 
-        $("#refreshSlug").click(function (event) {
-            event.preventDefault();
-            generateSlug();
-        });
 
-        function generateSlug() {
+    function generateSlug() {
             var title = $("#Title").val();
             if (!title) return {
 
@@ -93,6 +140,92 @@
             });
 
         }
+
+        });
+
+
+        $('#modalChangePhoto').on('hidden.bs.modal', function (e) {
+            $("#file-input").val(null);
+            $(".custom-file-label").text("Choose file");
+            $("#btnUpload").attr("disabled", "disabled");
+            if (cropper) {
+                cropper.croppie('destroy');
+                cropper = null;
+            }
+        });
+
+        var cropper = null;
+        $("#file-input").change(function () {
+            readFile(this);
+            if (this.files && this.files[0]) {
+                $("#btnUpload").removeAttr("disabled");
+            }
+            else {
+                $("#btnUpload").attr("disabled", "disabled");
+                if (cropper) {
+                    cropper.croppie('destroy');
+                    cropper = null;
+                }
+            }
+        });
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    if (cropper == null)
+                        cropper = $('.cropper').croppie({
+                            enableOrientation: true,
+                            viewport: { width: 300, height: 250, type: 'rectangle' }
+                        });
+                    cropper.croppie('bind', {
+                        url: e.target.result
+                    });
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#modalChangePhoto').on('hidden.bs.modal', function (e) {
+            $("#file-input").val(null);
+            $(".custom-file-label").text("Choose file");
+            $("#btnUpload").attr("disabled", "disabled");
+            if (cropper) {
+                cropper.croppie('destroy');
+                cropper = null;
+            }
+        });
+
+        $("#btnUpload").click(function () {
+            if (!cropper) {
+                return;
+            }
+            cropper.croppie('result', {
+                type: "base64", // base64 when it cropped
+                size: { width: 400, height: 300 }
+            }).then(function (base64) {
+                $("#CroppedImage").val(base64);
+                $(".modal").modal("hide");
+                var img = $("<img/>").attr("src", base64);
+                $("#previewProductImage").html(img);
+                $("#previewProductImage img").css("width", 40);
+                $("#previewProductImage img").css("height", 40);
+                $("#deleteProductImage").removeClass("d-none");
+            });
+        });
+
+        $("#deleteProductImage").click(function (e) {
+            e.preventDefault();
+            $("CroppedImage").val("");
+            $("#deleteProductImage").addClass("d-none");
+            $("#previewProductImage img").remove();
+            $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+
+        });
+
+        // https://www.npmjs.com/package/bs-custom-file-input
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
     </script>
 
 }

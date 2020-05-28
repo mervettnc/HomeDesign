@@ -45,5 +45,20 @@ namespace HomeDesign.Helpers
 
             return urlHelper.Content("~/Upload/" + fileName);
         }
+
+        public static string SaveCroppedFeaturedImage(this Controller controller, string imgBase64)
+        {
+            if (string.IsNullOrEmpty(imgBase64))
+                return null;
+
+            byte[] data = Convert.FromBase64String(imgBase64.Substring(22));
+            string fileName = Guid.NewGuid() + ".png";
+            string savePath = Path.Combine(
+                controller.Server.MapPath("~/Upload/"), fileName
+            );
+            System.IO.File.WriteAllBytes(savePath, data);
+
+            return fileName;
+        }
     }
 }

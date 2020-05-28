@@ -27,6 +27,7 @@ namespace HomeDesign.Areas.Admin.ViewModels
         [Display(Name ="Short Url")]
         [StringLength(100)]
         public string Slug { get; set; }
+        public string CroppedImage { get; set; }
 
      
     }
