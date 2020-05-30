@@ -114,17 +114,19 @@ namespace HomeDesign.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var fileName = this.SaveCroppedFeaturedImage(vm.CroppedImage);
                 var project = db.Projects.Find(vm.Id);
                 project.CategoryId = vm.CategoryId;
                 project.Title = vm.Title;
                 project.Content = vm.Content;
                 project.ModificationTime = DateTime.Now;
                 project.Slug = UrlService.URLFriendly(vm.Slug);
-                if (vm.FeaturedImage != null)
-                {
-                    this.DeleteImage(project.PhotoPath);
-                    project.PhotoPath = this.SaveImage(vm.FeaturedImage);
-                }
+                 project.PhotoPath = fileName ?? null;
+                //if (vm.FeaturedImage != null)
+                //{
+                //    this.DeleteImage(project.PhotoPath);
+                //    project.PhotoPath = this.SaveImage(vm.FeaturedImage);
+                //}
 
                 db.SaveChanges();
                 TempData["SuccessMessage"] = "The project updated successfully.";

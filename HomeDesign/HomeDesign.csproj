@@ -2060,6 +2060,7 @@
     <Content Include="Areas\Admin\Views\Shared\_DeleteModalPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Projects\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Projects\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_BreadcrumbPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

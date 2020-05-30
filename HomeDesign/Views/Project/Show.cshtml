@@ -5,5 +5,28 @@
 
 <h1 class="mt-5">@Model.Title</h1>
 
-<div class="show-project">@Html.Raw(Model.Content)</div>
+@*<div class="show-project  ">
+
+        @if (!string.IsNullOrEmpty(Model.PhotoPath))
+        {
+            <img src="@Url.FeaturedImage(Model.PhotoPath)" alt="Featured Image" class="img-fluid rounded" />
+
+        }
+
+<div class="float-right">  @Html.Raw(Model.Content)</div>
+    </div>*@
+
+<div class="container-fluid">
+    <div class="row justify-content-around show-project ">
+        <div class="col-sm-6 pb-5">
+            @if (!string.IsNullOrEmpty(Model.PhotoPath))
+            {
+                <img src="@Url.FeaturedImage(Model.PhotoPath)" alt="Featured Image" class="img-fluid rounded" />
+
+            }
+        </div>
+        <div class="col-sm-6 px-5 " style="color:black"> @Html.Raw(Model.Content)</div>
+    </div>
+</div>
+
 
