@@ -4,23 +4,30 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+<h1 class="my-4 pt-5 pb-md-3 pl-4  badge badge-success" style="margin-bottom:3.5rem!important;"  >
+    @(Model.SelectedCategory==null ? "" : Model.SelectedCategory.CategoryName)
+</h1>
 
 
 <div class="site-section first-section" data-aos="fade">
     <div class="container">
-        <div class="row mb-5">
+        <div class="row mb-5 px-5">
 
             @foreach (var project in Model.Projects)
             {
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="media-image">
-                        <a href="#"><img src="~/Images/bohem-yatak-odalari.jpg" class="img-fluid" />
-                                    <div class="media-image-body">
-                                        <h2 class="font-secondary text-uppercase"><a href="#">@project.Title</a></h2>
-                                        <span class="d-block mb-3">By @project.User.DisplayName &mdash; @project.CreationTime.Value.ToShortDateString()</span>
-                                        @Html.Raw(project.Content)
-                                        <p><a href="#">Read More</a></p>
-                                    </div>
+                <div class="col-md-12 col-lg-12 mb-5 ">
+                    <div class="media-image ">
+                        @if (!string.IsNullOrEmpty(project.PhotoPath))
+                        {
+                            <img src="@Url.FeaturedImage(project.PhotoPath)" class="img-fluid mx-auto d-block " />
+
+                        }
+                        <div class="media-image-body">
+                            <h2 class="font-secondary text-uppercase"><a href="#">@project.Title</a></h2>
+                            <span class="d-block mb-3">By @project.User.DisplayName &mdash; @project.CreationTime.Value.ToShortDateString()</span>
+                            @Html.Raw(project.Content)
+                         
+                        </div>
                     </div>
                 </div>
             }

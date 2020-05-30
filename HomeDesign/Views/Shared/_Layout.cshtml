@@ -63,12 +63,23 @@
 
                                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                                         <li class="nav-item">
-                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link " })
                                         </li>
 
-                                        <li class="nav-item">
-                                            @Html.ActionLink("Projects", "Projects", "Home", null, new { @class = "nav-link" })
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                                Categories
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                @Html.Action("CategoriesPartial","Home")
+                                                @*<a class="dropdown-item" href="#">Link 1</a>
+                                                <a class="dropdown-item" href="#">Link 2</a>
+                                                <a class="dropdown-item" href="#">Link 3</a>*@
+                                            </div>
                                         </li>
+                                        @*<li class="nav-item">
+            @Html.ActionLink("Projects", "Projects", "Home", null, new { @class = "nav-link" })
+        </li>*@
                                         <li class="nav-item">
                                             @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
                                         </li>
@@ -78,7 +89,7 @@
                                             <li class="nav-item ">
                                                 @Html.ActionLink("Administration", "Index", "Dashboard", new { area = "Admin" }, new { @class = "nav-link" })
                                             </li>
-                                            
+
                                         }
                                     </ul>
                                     @Html.Partial("_LoginPartial")

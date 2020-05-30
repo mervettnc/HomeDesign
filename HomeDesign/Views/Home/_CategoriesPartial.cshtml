@@ -1,0 +1,7 @@
+﻿@model List<Category>
+@foreach (var cat in Model)
+{
+<a class="dropdown-item" href="@Url.Action("Projects","Home",new {cid=cat.Id })">@cat.CategoryName</a>
+
+}
+  

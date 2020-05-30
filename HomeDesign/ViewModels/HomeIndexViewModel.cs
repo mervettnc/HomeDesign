@@ -9,5 +9,6 @@ namespace HomeDesign.ViewModels
     public class HomeIndexViewModel
     {
         public List<Project> Projects { get; set; }
+        public Category SelectedCategory { get; set; }
     }
 }

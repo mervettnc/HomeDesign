@@ -1,4 +1,5 @@
-﻿using HomeDesign.ViewModels;
+﻿using HomeDesign.Models;
+using HomeDesign.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace HomeDesign.Controllers
     {
         public ActionResult Index()
         {
+        
             var vm = new HomeIndexViewModel
             {
                 Projects = db.Projects.OrderByDescending(x=>x.CreationTime).ToList()
@@ -19,11 +21,26 @@ namespace HomeDesign.Controllers
             return View(vm);
         }
 
-        public ActionResult Projects()
+        public ActionResult Projects(int? cid)
         {
+            IQueryable<Project> projects = db.Projects;
+            Category category = null;
+
+            if (cid != null)
+            {
+                category = db.Categories.Find(cid);
+                if (category==null)
+                {
+                    return HttpNotFound();
+                }
+
+                projects = projects.Where(x => x.CategoryId == cid);
+            }
+
             var vm = new HomeIndexViewModel
             {
-                Projects = db.Projects.OrderByDescending(x => x.CreationTime).ToList()
+                Projects = projects.OrderByDescending(x => x.CreationTime).ToList(),
+                SelectedCategory = category
             };
 
             return View(vm);
@@ -36,6 +53,12 @@ namespace HomeDesign.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult CategoriesPartial()
+        {
+            var cats = db.Categories.OrderBy(x => x.CategoryName).ToList();
+            return PartialView("_CategoriesPartial",cats);
         }
     }
 }
