@@ -11,7 +11,6 @@ namespace HomeDesign.ViewModels
     {
         public IPagedList<Project> Projects { get; set; }
         public Category SelectedCategory { get; set; }
-
         public int? SelectedCategoryId { get; set; }
     }
 }
