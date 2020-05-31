@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using X.PagedList;
 
 namespace HomeDesign.Controllers
 {
@@ -12,17 +13,15 @@ namespace HomeDesign.Controllers
     {
         public ActionResult Index()
         {
-        
-            var vm = new HomeIndexViewModel
-            {
-                Projects = db.Projects.OrderByDescending(x=>x.CreationTime).ToList()
-            };
 
-            return View(vm);
+            var model = db.Projects.OrderByDescending(x => x.CreationTime).ToList();
+            return View(model);
         }
 
-        public ActionResult Projects(int? cid)
+        public ActionResult Projects(int? cid , int page = 1)
         {
+            var pageSize = 2;
+
             IQueryable<Project> projects = db.Projects;
             Category category = null;
 
@@ -39,8 +38,9 @@ namespace HomeDesign.Controllers
 
             var vm = new HomeIndexViewModel
             {
-                Projects = projects.OrderByDescending(x => x.CreationTime).ToList(),
-                SelectedCategory = category
+                Projects = projects.OrderByDescending(x => x.CreationTime).ToPagedList(page,pageSize),
+                SelectedCategory = category,
+                SelectedCategoryId=cid
             };
 
             return View(vm);

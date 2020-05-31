@@ -26,7 +26,7 @@
                             <h2 class="font-secondary text-uppercase"><a href="#">@project.Title</a></h2>
                             <span class="d-block mb-3">By @project.User.DisplayName &mdash; @project.CreationTime.Value.ToShortDateString()</span>
                             @Html.Raw(project.Content)
-                         
+
                         </div>
                     </div>
                 </div>
@@ -35,18 +35,28 @@
 
         </div>
 
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="custom-pagination">
-                    <span class="current">1</span>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <span>...</span>
-                    <a href="#">14</a>
-                </div>
+        <!-- Pagination -->
+
+        <nav aria-label="Page Number and Pagination">
+            <div class="mb-3 text-center">
+                Page @(Model.Projects.PageCount < Model.Projects.PageNumber ? 0 : Model.Projects.PageNumber) of @Model.Projects.PageCount
+                @Html.PagedListPager(Model.Projects, page => Url.Action("Projects",
+                  new { page, cid = Model.SelectedCategoryId }), new PagedListRenderOptionsBase
+                  {
+                      ContainerDivClasses = new string[] { "pagination-container", "d-flex" },
+                      UlElementClasses = new string[] { "pagination", "mx-auto" },
+                      LiElementClasses = new string[] { "page-item" },
+                      PageClasses = new string[] { "page-link" },
+                      EllipsesElementClass = "page-link",
+                      LinkToFirstPageFormat = "&laquo;",
+                      LinkToLastPageFormat = "&raquo;",
+                      LinkToPreviousPageFormat = "&lsaquo;",
+                      LinkToNextPageFormat = "&rsaquo;",
+                      MaximumPageNumbersToDisplay = 5,
+                      
+                  })
             </div>
-        </div>
+        </nav>
+
     </div>
 </div>

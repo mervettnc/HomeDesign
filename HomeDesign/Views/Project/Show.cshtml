@@ -3,30 +3,48 @@
     ViewBag.Title = Model.Title;
 }
 
-<h1 class="mt-5">@Model.Title</h1>
+<h1 class="mt-5"></h1>
+<h1 class="my-4  pb-md-3 pl-4  badge badge-success" style="padding-top: 4rem!important;">
+    @(Model.Title)
+</h1>
 
 @*<div class="show-project  ">
 
-        @if (!string.IsNullOrEmpty(Model.PhotoPath))
-        {
-            <img src="@Url.FeaturedImage(Model.PhotoPath)" alt="Featured Image" class="img-fluid rounded" />
-
-        }
-
-<div class="float-right">  @Html.Raw(Model.Content)</div>
-    </div>*@
-
-<div class="container-fluid">
-    <div class="row justify-content-around show-project ">
-        <div class="col-sm-6 pb-5">
             @if (!string.IsNullOrEmpty(Model.PhotoPath))
             {
                 <img src="@Url.FeaturedImage(Model.PhotoPath)" alt="Featured Image" class="img-fluid rounded" />
 
             }
-        </div>
-        <div class="col-sm-6 px-5 " style="color:black"> @Html.Raw(Model.Content)</div>
+
+    <div class="float-right">  @Html.Raw(Model.Content)</div>
+        </div>*@
+
+<div class="col-md-12 col-lg-12 mb-5">
+    <div class="media-image ">
+        
+            @if (!string.IsNullOrEmpty(Model.PhotoPath))
+            {
+                <img src="@Url.FeaturedImage(Model.PhotoPath)" alt="Featured Image" class="img-fluid  mx-auto d-block" />
+
+            }
+      
+        <div class="media-image-body" style="color:black"> @Html.Raw(Model.Content)</div>
     </div>
 </div>
 
+@*<div class="col-md-12 col-lg-12 mb-5 ">
+    <div class="media-image ">
+        @if (!string.IsNullOrEmpty(project.PhotoPath))
+        {
+            <img src="@Url.FeaturedImage(project.PhotoPath)" class="img-fluid mx-auto d-block " />
+
+        }
+        <div class="media-image-body">
+            <h2 class="font-secondary text-uppercase"><a href="#">@project.Title</a></h2>
+            <span class="d-block mb-3">By @project.User.DisplayName &mdash; @project.CreationTime.Value.ToShortDateString()</span>
+            @Html.Raw(project.Content)
+
+        </div>
+    </div>
+</div>*@
 

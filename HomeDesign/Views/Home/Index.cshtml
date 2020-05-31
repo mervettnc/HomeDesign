@@ -1,4 +1,4 @@
-﻿@model HomeIndexViewModel
+﻿@model List<Project>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-12 block-13 nav-direction-white">
                 <div class="nonloop-block-13 owl-carousel">
-                    @foreach (var project in Model.Projects)
+                    @foreach (var project in Model)
                     {
 
                         <div class="media-image">
@@ -125,7 +125,7 @@
         <div class="row">
             <div class="col-md-12 block-13 nav-direction-white">
                 <div class="nonloop-block-13 owl-carousel">
-                    @foreach (var project in Model.Projects)
+                    @foreach (var project in Model)
                     {
 
                         <div class="media-image">

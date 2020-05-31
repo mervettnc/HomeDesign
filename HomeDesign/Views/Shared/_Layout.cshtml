@@ -18,7 +18,7 @@
     <link href="~/Content/animate.css" rel="stylesheet" />
     <link href="~/Content/fonts/flaticon/font/_flaticon.css" rel="stylesheet" />
     <link href="~/Content/aos.css" rel="stylesheet" />
-  
+
     <link href="~/Content/style.css" rel="stylesheet" />
 
 </head>
@@ -53,7 +53,7 @@
                         <div class="col-2">
                             <h2 class="mb-0 site-logo ">
                                 @Html.ActionLink("Home Design", "Index", "Home", null, new { @class = "text-uppercase" })
-                  
+
                             </h2>
                         </div>
                         <div class="col-10">
@@ -71,15 +71,15 @@
                                                 Categories
                                             </a>
                                             <div class="dropdown-menu">
-                                                @Html.Action("CategoriesPartial","Home")
+                                                @Html.Action("CategoriesPartial", "Home")
                                                 @*<a class="dropdown-item" href="#">Link 1</a>
-                                                <a class="dropdown-item" href="#">Link 2</a>
-                                                <a class="dropdown-item" href="#">Link 3</a>*@
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>*@
                                             </div>
                                         </li>
                                         @*<li class="nav-item">
-            @Html.ActionLink("Projects", "Projects", "Home", null, new { @class = "nav-link" })
-        </li>*@
+                                                @Html.ActionLink("Projects", "Projects", "Home", null, new { @class = "nav-link" })
+                                            </li>*@
                                         <li class="nav-item">
                                             @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
                                         </li>
@@ -94,8 +94,8 @@
                                     </ul>
                                     @Html.Partial("_LoginPartial")
 
-                                  
-                                    
+
+
 
                                 </div>
                             </nav>
@@ -104,6 +104,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <div class="slide-one-item home-slider owl-carousel">
 
