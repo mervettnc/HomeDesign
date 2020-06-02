@@ -9,8 +9,7 @@
 
 
 <div class="site-half">
-    <div class="img-bg-1 mt-5" style=" background-image: url('../../Images/img_4.jpg');
-" data-aos="fade"></div>
+    <div class="img-bg-1 mt-5" style="  background-image: url('../../Images/flower.jpg');" data-aos="fade"></div>
     <div class="container">
         <div class="row no-gutters align-items-stretch">
             <div class="col-lg-5 ml-lg-auto py-5">
@@ -25,13 +24,12 @@
 </div>
 
 <div class="site-half block">
-    <div class="img-bg-1 mt-5 right" style="  background-image: url('../../Images/img_5.jpg');
-" data-aos="fade"></div>
+    <div class="img-bg-1 mt-5 right" style="   background-image: url('../../Images/homes-that-embrace-nature.jpg');" data-aos="fade"></div>
     <div class="container">
         <div class="row no-gutters align-items-stretch">
-            <div class="col-lg-5 mr-lg-auto py-5">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">Easy To Use Templates</span>
-                <h2 class="site-section-heading text-uppercase font-secondary mb-5">Free HTML5 Templates</h2>
+            <div class="col-lg-5 mr-lg-auto py-5 mt-3">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">Ideas & Design</span>
+                <h2 class="site-section-heading text-uppercase font-secondary mb-5">Clean Design</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid eius facilis voluptatem eligendi magnam accusamus vel commodi asperiores sint rem reprehenderit nobis nesciunt veniam qui fugit doloremque numquam quod.</p>
 
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora distinctio ipsam nesciunt recusandae repellendus asperiores amet.</p>
@@ -81,42 +79,12 @@
 
 
 
-@*<div class="site-section">  //slider sız
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-12" data-aos="fade">
-                    <h2 class="site-section-heading text-center text-uppercase">inspiring designs</h2>
-                </div>
-            </div>
-            <div class="row">
-                @foreach (var project in Model.Projects)
-                {
-                    <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <div class="media-image">
-                            <a href="#">
-                                <img src="~/Images/bohem-yatak-odalari.jpg" class="img-fluid" />
-                            </a>
-                            <div class="media-image-body">
-                                <h2 class="font-secondary text-uppercase">@project.Title</h2>
-                                <span class="d-block mb-3">By <a href="#">@project.User.DisplayName</a> &mdash; @project.CreationTime.Value.ToShortDateString()</span>
-                                <div class="blog-project-content">@Html.Raw(project.Content)</div>
 
-                                <p><a href="#">Read More</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                }
-
-            </div>
-        </div>
-    </div>*@
-
-<div class="site-section ">
+@*<div class="site-section ">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                @*<span class="caption d-block mb-2 font-secondary font-weight-bold">Inspiring Designs</span>*@
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">Inspiring Designs</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">inspirational designs</h2>
 
             </div>
@@ -144,14 +112,14 @@
         </div>
 
     </div>
-</div>
+</div>*@
 
 <div class="py-5 bg-primary">
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6 text-center mb-3 mb-md-0">
                 <h2 class="text-uppercase text-white mb-4" data-aos="fade-up">Try For Your Next Project</h2>
-                <a href="#" class="btn btn-bg-primary font-secondary text-uppercase" data-aos="fade-up" data-aos-delay="100">Contact Us</a>
+                <a href="@Url.Action("Contact","Home")" class="btn btn-bg-primary font-secondary text-uppercase" data-aos="fade-up" data-aos-delay="100">Contact Us</a>
             </div>
         </div>
     </div>

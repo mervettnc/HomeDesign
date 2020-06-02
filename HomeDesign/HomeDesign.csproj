@@ -1933,8 +1933,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\bohem-yatak-odalari.jpg" />
     <Content Include="Images\bohem-yatak-odalari2.jpg" />
+    <Content Include="Images\flower.jpg" />
     <Content Include="Images\hero_1.jpg" />
     <Content Include="Images\hero_2.jpg" />
+    <Content Include="Images\homes-that-embrace-nature.jpg" />
     <Content Include="Images\img_1.jpg" />
     <Content Include="Images\img_2.jpg" />
     <Content Include="Images\img_3.jpg" />
