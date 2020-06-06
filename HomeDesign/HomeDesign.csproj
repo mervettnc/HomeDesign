@@ -1933,9 +1933,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\bohem-yatak-odalari.jpg" />
     <Content Include="Images\bohem-yatak-odalari2.jpg" />
+    <Content Include="Images\ev-aksesuarları-ev-süsleri-dekoratif-objeler-13.jpg" />
     <Content Include="Images\flower.jpg" />
     <Content Include="Images\hero_1.jpg" />
     <Content Include="Images\hero_2.jpg" />
+    <Content Include="Images\holiday-decor-small-space-06-1505838978.jpg" />
     <Content Include="Images\homes-that-embrace-nature.jpg" />
     <Content Include="Images\img_1.jpg" />
     <Content Include="Images\img_2.jpg" />
@@ -2079,6 +2081,7 @@
     <Content Include="Areas\Admin\Views\Projects\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Projects\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_BreadcrumbPartial.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
